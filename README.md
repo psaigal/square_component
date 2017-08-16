@@ -5,8 +5,10 @@ It allows a user to create a square div. You can apply the following effects on 
 
 This component was designed using the Revealing Prototype Pattern.
 
-#How to Use
-Create a new instance of Square
+##How to Use
+>Create a new instance of Square
 
+```javascript
 var newSquare = new Square(); //This will automatically generate a blue square
 newSquare.changeBackgroundColorSquare(); //This will change the square to a different random color
+```
