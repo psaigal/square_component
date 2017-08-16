@@ -5,7 +5,7 @@ It allows a user to create a square div. You can apply the following effects on 
 
 This component was designed using the Revealing Prototype Pattern.
 
-##How to Use
+## How to Use
 >Create a new instance of Square
 
 ```javascript
