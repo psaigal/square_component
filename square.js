@@ -6,39 +6,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		this.style.display = "none";
 	})
 });
+//Code above shows one example of how to use this component
 
-
-
-
-var Square = function() {
-    this.squareDiv;
-
-    var _createElement = function() {
-		var square = document.createElement("div");
-		square.id = "square";
-		document.body.appendChild(square);
-	}
-
-	this.styleDiv = function() {
-		this.squareDiv = document.getElementById("square");
-		this.squareDiv.style.width = "300px";
-		this.squareDiv.style.height = "300px";
-		this.squareDiv.style.border = "2px solid black";
-		this.squareDiv.style.backgroundColor = "blue";
-		this.squareDiv.style.margin = "0 auto";
-	}
-
-	this.init = function() {
-		_createElement();
-		this.styleDiv();
-	}
-
-	this.init();
-
+function Square() {
+    this.squareDiv = document.createElement("div");
+    this.squareDiv.id = "square" + this.add();
+    this.squareDiv.style.width = "300px";
+    this.squareDiv.style.height = "300px";
+    this.squareDiv.style.border = "2px solid black";
+    this.squareDiv.style.backgroundColor = "blue";
+    this.squareDiv.style.margin = "0 auto";
+    document.body.appendChild(this.squareDiv);
 }
 
-Square.prototype = function() {
 
+Square.prototype = function() {
 	//private methods
 	var _changeRandomColor = function(elm) {
 		var colorArray = ["red", "orange", "purple", "green"];
@@ -46,6 +28,7 @@ Square.prototype = function() {
 		elm.style.backgroundColor = colorArray[randomNumber];
 		elm.style.opacity = 1;
 	};
+
 
 	var _fadeElement = function(elm) {
 		var fadeEffect = setInterval(function () {
@@ -59,7 +42,16 @@ Square.prototype = function() {
 	        }
     	}, 200);
 	}
-	
+
+	var _counterFunc = function () {
+	  var counter = 0;
+	  return function () {
+	  	return counter += 1;
+	  }
+	}
+
+	var add = _counterFunc();
+
 	//public methods(API)
 	var changeBackgroundColorSquare = function() {
 		_changeRandomColor(this.squareDiv);
@@ -72,6 +64,11 @@ Square.prototype = function() {
 
 	return {
 		changeBackgroundColorSquare: changeBackgroundColorSquare,
-		fadeSquare: fadeSquare
+		fadeSquare: fadeSquare,
+		add: add
 	}
 }();
+
+
+
+
